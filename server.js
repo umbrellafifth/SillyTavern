@@ -372,3 +372,8 @@ initUserStorage(globalThis.DATA_ROOT)
     .then(apply404Middleware)
     .then(() => new ServerStartup(app, cliArgs).start())
     .then(postSetupTasks);
+
+const PORT = process.env.PORT || 8000; // Fallback to 8000 if PORT is not set
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
